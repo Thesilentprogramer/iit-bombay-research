@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 
@@ -9,7 +10,7 @@ app.use(express.json());
 
 // Connect to MongoDB
 // We removed /noiseDB from the string and added it explicitly as dbName
-mongoose.connect("mongodb+srv://rohan:rohan123@cluster0.0s5yfgg.mongodb.net/", {
+mongoose.connect(process.env.MONGO_URI, {
   dbName: "noiseDB"
 })
   .then(() => console.log("✅ Connected to MongoDB Atlas!"))
